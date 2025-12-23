@@ -1,57 +1,70 @@
-# Vehicle Rental System
+# 🚗 Vehicle Rental System - Database Design & SQL Queries
 
-## Project Overview
-This project is a simple Vehicle Rental System designed to demonstrate
-basic database design and SQL querying concepts.
+## 📌 Project Overview
+This project is a simplified **Vehicle Rental System** designed to demonstrate core database concepts including **ERD design**, **primary and foreign key relationships**, and **SQL queries** using JOIN, EXISTS, WHERE, GROUP BY, and HAVING clauses.
 
-The system manages three core entities:
-- Users
-- Vehicles
-- Bookings
-
-It supports vehicle booking, availability tracking, and booking history
-using relational database concepts.
+The system manages users, vehicles, and bookings while maintaining proper relational integrity.
 
 ---
 
-## Database Design
-The database contains three tables:
-
-### Users
-Stores user information such as name, email, phone number, and role
-(Admin or Customer). Each user is uniquely identified by `user_id`.
-
-### Vehicles
-Stores vehicle details including name, type, model year, registration
-number, rental price per day, and current availability status.
-
-### Bookings
-Stores booking information including which user booked which vehicle,
-rental start and end dates, booking status, and total cost.
+## 🎯 Objectives
+- Design a relational database using ERD
+- Understand 1-to-Many and Many-to-1 relationships
+- Implement primary keys and foreign keys
+- Write optimized SQL queries
+- Practice viva concepts related to databases
 
 ---
 
-## Explanation of SQL Queries
+## 🗂️ Database Entities
 
-### Query 1: INNER JOIN
-This query retrieves booking details along with the customer name and
-vehicle name by joining the `users`, `vehicles`, and `bookings` tables.
-
-### Query 2: NOT EXISTS
-This query finds all vehicles that have never been booked by checking
-which vehicles do not exist in the `bookings` table.
-
-### Query 3: WHERE Clause
-This query retrieves all available vehicles of a specific type
-(for example, cars).
-
-### Query 4: GROUP BY and HAVING
-This query counts total bookings for each vehicle and displays only
-those vehicles that have more than two bookings.
+### 1️⃣ Users
+Stores information about system users.
+- id (UUID, Primary Key)
+- role (Admin / Customer)
+- name
+- email (Unique)
+- phone_number
+- password
 
 ---
+
+### 2️⃣ Vehicles
+Stores vehicle-related information.
+- id (UUID, Primary Key)
+- name
+- type (Car / Bike / Truck)
+- model
+- registration_number (Unique)
+- price_per_day
+- availability_status (Available / Rented / Maintenance)
+
+---
+
+### 3️⃣ Bookings
+Stores booking details.
+- id (UUID, Primary Key)
+- user_id (Foreign Key → Users)
+- vehicle_id (Foreign Key → Vehicles)
+- start_date
+- end_date
+- status (Pending / Confirmed / Completed / Cancelled)
+- total_cost
+
+---
+
+## 🔗 Database Relationships
+- **One-to-Many**: One User can have multiple Bookings
+- **Many-to-One**: Multiple Bookings can belong to one Vehicle
+- **Logical One-to-One**: Each Booking is linked to one User and one Vehicle
+
+---
+
+## 🧠 SQL Queries Covered
+- INNER JOIN
+- NOT EXISTS
+- WHERE filtering
+- GROUP BY with HAVING
 
 ## Conclusion
-This project demonstrates the use of relational database design,
-primary and foreign keys, and common SQL queries such as JOIN,
-WHERE, EXISTS, GROUP BY, and HAVING.
+This project demonstrates the use of relational database design, primary and foreign keys, and common SQL queries such as JOIN, WHERE, EXISTS, GROUP BY, and HAVING.
